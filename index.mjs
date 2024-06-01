@@ -23,6 +23,13 @@ async function updateIp() {
         console.log('ไฟล์ JSON ถูกเขียนเรียบร้อยแล้ว');
 
         ghpages.publish('./', {
+            user: {
+                name: 'n-devs',
+                email: 'n.devs260340@gmail.com'
+            },
+            add: true,
+            message: 'Auto-generated commit',
+            branch: 'main',
             repo: 'https://' + process.env.GH_TOKEN + '@github.com/n-devs/public-ip.git',
             silent: true
         }, (res) => {
