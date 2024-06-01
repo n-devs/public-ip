@@ -1,7 +1,7 @@
 FROM node:18
 
 # RUN mkdir /files
-WORKDIR /files
+WORKDIR /public-ip
 
 COPY package*.json ./
 
