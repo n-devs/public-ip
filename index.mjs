@@ -23,6 +23,13 @@ async function updateIp() {
         console.log('ไฟล์ JSON ถูกเขียนเรียบร้อยแล้ว');
 
         ghpages.publish('./', {
+            user: {
+                name: 'n-devs',
+                email: 'n.devs260340@gmail.com'
+            },
+            add: true,
+            message: 'Auto-generated commit',
+            branch: 'main',
             repo: 'https://' + process.env.GH_TOKEN + '@github.com/n-devs/public-ip.git',
             silent: true
         }, (res) => {
@@ -33,13 +40,10 @@ async function updateIp() {
 }
 
 
-updateIp()
+// กำหนดรันงานทุกวันเวลา 02:30 น.
+cron.schedule('30 2 * * *', () => {
+    console.log('รันงานทุกวันเวลา 02:30 น.');
 
-
-// // กำหนดงานที่จะทำทุกๆ 1 ชั่วโมง
-// cron.schedule('0 * * * *', () => {
-//     console.log('รันงานทุกๆ 1 ชั่วโมง');
-
-//     // ใส่โค้ดที่ต้องการรันในนี้
-//     updateIp()
-// });
+    // ใส่โค้ดที่ต้องการรันในนี้
+    updateIp()
+});
