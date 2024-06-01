@@ -25,7 +25,7 @@ async function updateIp() {
 
             const jsonData = JSON.stringify(data);
 
-            fs.writeFile('dist/ip-address.json', jsonData, (err) => {
+            fs.writeFile('dist/ip-address.json', data, (err) => {
                 if (err) {
                     console.error('เกิดข้อผิดพลาดขณะเขียนไฟล์:', err);
                     return;
