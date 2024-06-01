@@ -3,9 +3,7 @@ import { publicIpv4 } from 'public-ip'
 import fs from 'fs'
 import ghpages from 'gh-pages'
 
-const data = {
-    ipv4: ""
-};
+const data = { ipv4: "" };
 
 
 
