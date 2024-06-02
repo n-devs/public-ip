@@ -32,12 +32,11 @@ async function updateIp() {
                 console.log(data);
                 console.log('ไฟล์ JSON ถูกเขียนเรียบร้อยแล้ว');
 
-                ghpages.publish('dist', {
+                ghpages.publish('./dist', {
                     user: {
                         name: 'n-devs',
                         email: 'n.devs260340@gmail.com'
                     },
-                    add: true,
                     message: `Update ipV4: ${data.ipv4}`,
                     branch: 'data',
                     repo: 'https://' + process.env.GH_TOKEN + '@github.com/n-devs/public-ip.git',
