@@ -32,19 +32,19 @@ async function updateIp() {
                 }
                 console.log('ไฟล์ JSON ถูกเขียนเรียบร้อยแล้ว');
 
-                ghpages.publish('./', {
+                ghpages.publish('dist', {
                     user: {
                         name: 'n-devs',
                         email: 'n.devs260340@gmail.com'
                     },
                     add: true,
-                    message: 'Auto-generated commit',
-                    branch: 'prod',
+                    message: `Update ipV4: ${data.ipv4}`,
+                    branch: 'data',
                     repo: 'https://' + process.env.GH_TOKEN + '@github.com/n-devs/public-ip.git',
                     silent: true
                 }, (res) => {
                     console.log(res);
-                    console.log('Update IP เรียบร้อยแล้ว');
+                    console.log(`Update IP: ${data.ipv4} เรียบร้อยแล้ว`);
                 });
             });
         }
