@@ -11,7 +11,7 @@ async function updateIp() {
     data.ipv4 = await publicIpv4();
 
     // อ่านไฟล์ JSON
-    fs.readFile('dist/ip-address.json', 'utf8', (err, data) => {
+    fs.readFile('dist/ip-address.json', 'utf8', (err, readData) => {
 
         if (err) {
             console.error('เกิดข้อผิดพลาดขณะอ่านไฟล์:', err);
@@ -19,17 +19,17 @@ async function updateIp() {
         }
 
         // แปลงสตริง JSON เป็นออบเจกต์ JavaScript
-        const getJsonData = JSON.parse(data);
+        const getJsonData = JSON.parse(readData);
 
         if (getJsonData.ipv4 !== data.ipv4) {
 
-            const jsonData = JSON.stringify(data);
-
-            fs.writeFile('dist/ip-address.json', data, (err) => {
+            fs.writeFile('dist/ip-address.json', JSON.stringify(data), (err) => {
                 if (err) {
                     console.error('เกิดข้อผิดพลาดขณะเขียนไฟล์:', err);
                     return;
                 }
+
+                console.log(data);
                 console.log('ไฟล์ JSON ถูกเขียนเรียบร้อยแล้ว');
 
                 ghpages.publish('dist', {
@@ -51,6 +51,8 @@ async function updateIp() {
 
     });
 }
+
+// updateIp()
 
 // กำหนดรันงานทุกๆ 1 นาที
 cron.schedule('*/1 * * * *', () => {
