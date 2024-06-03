@@ -5,9 +5,9 @@ WORKDIR /public-ip
 
 COPY package*.json ./
 
-RUN npm install
+# RUN npm install
 
-COPY index.mjs ./
+COPY . .
 
 
 CMD [ "npm", "start" ]
