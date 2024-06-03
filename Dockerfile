@@ -1,9 +1,9 @@
 FROM node:18
 
 # RUN mkdir /files
-WORKDIR /public-ip
+WORKDIR /ro-ip
 
-COPY package*.json ./
+# COPY package*.json ./
 
 # RUN npm install
 
