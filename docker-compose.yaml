@@ -1,0 +1,17 @@
+version: '3' # vs mais atual
+
+services:
+  ip:
+    build: ./
+    container_name: ro-ip
+    restart: always
+    tty: true
+    working_dir: /ro-ip
+    volumes:
+      - ./:/ro-ip
+    networks:
+      - ro-network
+
+networks:
+  ro-network:
+    driver: bridge
